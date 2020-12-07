@@ -1,6 +1,3 @@
-import re
-
-
 def _load_file():
 	# Open the file in read-only mode
 	return open('data/05.txt', 'r')
