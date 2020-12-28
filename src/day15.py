@@ -3,11 +3,6 @@ def _load_file():
 	return open('data/15.txt', 'r')
 
 
-def _getNextValue(turn, current, indexDict):
-	if not current in indexDict:
-		return 0
-	return turn - indexDict[current]
-
 def play(turns):
 	f = _load_file()
 	initialValues = list(map(lambda v: int(v), f.readline().split(',')))
@@ -18,9 +13,9 @@ def play(turns):
 	currentValue = initialValues[len(initialValues) - 1]
 	while turn != turns - 1:
 		turn = turn + 1
-		nextValue = _getNextValue(turn, currentValue, indexDict)
+		age = indexDict.get(currentValue, turn)
 		indexDict[currentValue] = turn
-		currentValue = nextValue
+		currentValue = turn - age
 	return currentValue
 
 
