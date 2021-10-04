@@ -1,6 +1,3 @@
-from io import FileIO
-
-
 def _load_file():
 	# Open the file in read-only mode
 	return open('data/17.txt', 'r')
@@ -11,11 +8,11 @@ def parseInput(f):
 	column = 0
 	row = 0
 	for c in f.read():
-		if c is '\n':
+		if c == '\n':
 			column = 0
 			row += 1
 		else:
-			if c is '#':
+			if c == '#':
 				active.add((column, row, 0, 0))
 			column += 1
 	return active
@@ -33,7 +30,7 @@ def getNeighbors3D(cell):
 def _part1():
 	f = _load_file()
 	active = parseInput(f)
-	for i in range(6):
+	for _ in range(6):
 		hotNeighbors = set()
 		newActive = set()
 		for cell in active:
@@ -48,8 +45,7 @@ def _part1():
 			if len(activeNeighbors) == 3:
 				newActive.add(cell)
 		active = newActive
-	print(len(active))
-	return None
+	return len(active)
 
 
 def getNeighbors4D(cell):
@@ -82,8 +78,7 @@ def _part2():
 			if len(activeNeighbors) == 3:
 				newActive.add(cell)
 		active = newActive
-	print(len(active))
-	return None
+	return len(active)
 
 
 def main():
